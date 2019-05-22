@@ -1,3 +1,7 @@
+body {
+    background-color: #6cf;
+}
+
 .wrapper {
     width: 50%;
     margin: 20% auto;
@@ -10,24 +14,35 @@ table {
 td {
     width: 50px;
     height: 50px;
-    border: 1px solid gray;
+    background-color: #fff;
+    border-radius: 3px;
 }
 
 #button {
     display: block;
-    width: 224px;
+    width: 214px;
     text-align: center;
     margin: 0 auto;
     padding: 10px 0;
     border: none;
     color: white;
-    background-color: #6a4;
+    background-color: #55a;
     font-size: 18px;
     text-transform: uppercase;
+    border-radius: 3px;
+    outline: none;
 }
 
 .time {
     width: 200px;
     text-align: center;
     margin: 10px auto;
+    color: #fff;
+}
+
+#minutes,
+#seconds,
+#milliseconds {
+    font-size: 20px;
+    font-family: Arial;
 }

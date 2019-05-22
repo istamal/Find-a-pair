@@ -1,32 +1,95 @@
+const button = document.getElementById('button');
 
-
-var button = document.getElementById('button'),
-    cell   = document.getElementsByTagName('td'),
+let cell = document.getElementsByTagName('td'),
     colorIndex = 0,
-    i = colorIndex;
-    var x = 0;
+    i = colorIndex,
+    minutes = document.getElementById('minutes'),
+    seconds = document.getElementById('seconds'),
+    milliseconds = document.getElementById('milliseconds');
 
+////////\\\\\\   ФУНКЦИИ ДЛЯ ТАЙМЕРА   //////\\\\\\\
 
-button.addEventListener( 'click', function () {
+let x = 0;
+let y = 0;
+let z = 0;
 
-    for (i = 0; i < cell.length; i++) {
+const setMinutes = () => minutes.innerHTML = x++;
 
-        cell[i].addEventListener('click', function (e) {
-            var colors = ['red', 'blue', 'green', 'yelloy', 'purple', 'gray'];
-            var clickedCell = e.target;
+const setSeconds = () => {
 
-            var min = 0;
+    seconds.innerHTML = "0" + y++;
 
-            var max = 5;
+    if (y > 9) {
 
-            var randomColor = min + Math.floor(Math.random() * (max + 1 - min));
+        seconds.innerHTML = y++;
+        if (y === 60) {
+            y = 0;
+        }
 
-            clickedCell.style.backgroundColor = colors[randomColor];
-            
-        });
+    } else {
 
+        seconds.innerHTML = "0" + y++
 
+        if (y === 60) {
+            y = 0;
+        }
+
+    };
 
 }
+
+const setMilliseconds = () => {
+
+    milliseconds.innerHTML = "0" + z++;
+
+    if (z > 9) {
+
+        milliseconds.innerHTML = z++;
+        if (z === 60) {
+            z = 0;
+        }
+
+    } else {
+
+        milliseconds.innerHTML = "0" + z++
+
+        if (z === 60) {
+            z = 0;
+        }
+
+    };
+
+}
+
+
+/////////////// ВЕШАЕМ СОБЫТИЕ НА КНОПКУ /////////////////
+
+button.addEventListener('click', () => {
+
+    setInterval(setMinutes, 30000);
+    setInterval(setSeconds, 980);
+    setInterval(setMilliseconds, 30);
+
+// ЗДЕСЬ ВЕШАЕМ СОБЫТИЕ НА ЯЧЕЙКУ ЧТОБЫ КЛИК НА ЯЧЕЙКУ ДЕЙСТВОВАЛ ТОЛЬКО ПОСЛЕ НАЖАТИИ НА КНОПКУ //
+
+    for (i in cell) {
+
+        cell[i].addEventListener('click', (e) => {
+
+            let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'gray'];
+
+            let clickedCell = e.target;
+
+            const min = 0;
+
+            const max = 6;
+
+            let randomColor = Math.floor(Math.random() * (max - min) + min);
+
+            clickedCell.style.backgroundColor = colors[randomColor];
+
+        });
+
+    }
 
 });
